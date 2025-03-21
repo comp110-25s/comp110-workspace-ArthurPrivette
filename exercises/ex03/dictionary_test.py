@@ -16,7 +16,7 @@ def test_invert_one_pair():
 
 
 def test_invert_duplicate_values():
-    """Test invert when duplicate values exist."""
+    """Test invert with duplicate values."""
     with pytest.raises(KeyError):
         invert({"one": "1", "two": "1"})
 
@@ -27,8 +27,8 @@ def test_count_basic():
 
 
 def test_count_all_unique():
-    """Test count when all words are unique."""
-    assert count(["dog", "cat", "fish"]) == {"dog": 1, "cat": 1, "fish": 1}
+    """Test count when all words are different."""
+    assert count(["dog", "cat", "Squirell"]) == {"dog": 1, "cat": 1, "Squirell": 1}
 
 
 def test_count_empty():
@@ -36,8 +36,8 @@ def test_count_empty():
     assert count([]) == {}
 
 
-def test_favorite_color_simple():
-    """Test when one color is clearly the favorite."""
+def test_favorite_color():
+    """Test when one color is the favorite."""
     assert favorite_color({"Alice": "blue", "Bob": "blue", "Charlie": "red"}) == "blue"
 
 
@@ -51,18 +51,18 @@ def test_favorite_color_tie():
     )
 
 
-def test_favorite_color_only_one_person():
+def test_favorite_color_one_person():
     """Test when there is only one person in the dictionary."""
     assert favorite_color({"Alice": "green"}) == "green"
 
 
 def test_bin_len_basic():
-    """Test simple case where words are binned by length."""
+    """Test case where words are binned by length."""
     assert bin_len(["hi", "hello", "bye"]) == {2: {"hi"}, 5: {"hello"}, 3: {"bye"}}
 
 
 def test_bin_len_repeats():
-    """Test bin_len where words have repeats (should remove duplicates)."""
+    """Test bin_len where words have repeats."""
     assert bin_len(["cat", "dog", "cat", "bat"]) == {3: {"cat", "dog", "bat"}}
 
 
